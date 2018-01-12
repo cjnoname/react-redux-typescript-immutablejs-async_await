@@ -15,7 +15,7 @@ class ClientView extends React.Component<ClientViewProps, {}> {
     componentWillMount() {
         // This method runs when the component is first added to the page
         // let startDateIndex = parseInt(this.props.match.params.startDateIndex) || 0;
-        this.props.requestSample();
+        this.props.fetchSample();
     }
 
     componentWillReceiveProps(nextProps: ClientViewProps) {

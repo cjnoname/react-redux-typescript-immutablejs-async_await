@@ -1,32 +1,27 @@
-import { AppThunkAction } from '../../store';
 import { Sample } from './models';
-import * as Api from "./apis";
+import { fetchSample } from './workers/sample';
 
 export enum ActionTypes {
-    REQUEST_SAMPLE = 'REQUEST_SAMPLE',
-    RECEIVE_SAMPLE = 'RECEIVE_SAMPLE'
+    FETCH_SAMPLE_STARTED,
+    FETCH_SAMPLE_SUCCEEDED,
+    FETCH_SAMPLE_FAILED
 }
 
-export interface RequestSampleAction {
-    type: ActionTypes.REQUEST_SAMPLE;
+export interface FetchSampleStarted {
+    type: ActionTypes.FETCH_SAMPLE_STARTED;
 }
 
-export interface ReceiveSampleAction {
-    type: ActionTypes.RECEIVE_SAMPLE;
+export interface FetchSampleSucceeded {
+    type: ActionTypes.FETCH_SAMPLE_SUCCEEDED;
     sample: Sample;
 }
 
-export type KnownAction = RequestSampleAction | ReceiveSampleAction;
+export interface FetchSampleFailed {
+    type: ActionTypes.FETCH_SAMPLE_FAILED;
+}
+
+export type KnownAction = FetchSampleStarted | FetchSampleSucceeded | FetchSampleFailed;
 
 export const actionCreators = {
-    requestSample: (): AppThunkAction<KnownAction> => async (dispatch, getState) => {
-        dispatch({ type: ActionTypes.REQUEST_SAMPLE });
-        try {
-            const response = await Api.getList();
-            const data = await response.json();
-            dispatch({ type: ActionTypes.RECEIVE_SAMPLE, sample: data as Sample });
-        }catch(e) {
-            console.log("e!:", e);
-        }
-    }
+    fetchSample
 };

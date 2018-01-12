@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Field, reduxForm, DecoratedComponentClass, ConfigProps } from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 
 let OAuthForm = (props: any) => {
   const { handleSubmit } = props

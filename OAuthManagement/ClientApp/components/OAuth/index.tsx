@@ -31,7 +31,7 @@ class OAuth extends React.Component<OAuthProps, {}> {
     }
 
     submit = (values: OAuthRequest) => {
-        this.props.saveData(values);
+        this.props.saveOAuth(values);
     }
 
     public render() {

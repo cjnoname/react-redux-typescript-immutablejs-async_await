@@ -9,7 +9,7 @@
     "sourceMap": true,
     "skipDefaultLibCheck": true,
     "strict": true,
-    "lib": ["es6", "dom"],
+    "lib": ["es2017", "dom"],
     "types": ["webpack-env"]
   },
   "exclude": [
